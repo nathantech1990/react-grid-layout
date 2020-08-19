@@ -9,7 +9,9 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _react = _interopRequireDefault(require("react"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
 var _default = {
   //
@@ -30,20 +32,28 @@ var _default = {
   // A selector for the draggable handler
   draggableHandle: _propTypes.default.string,
   // Deprecated
-  verticalCompact: function verticalCompact(props
-  /*: Props*/
+  verticalCompact: function verticalCompact(
+    props
+    /*: Props*/
   ) {
-    if (props.verticalCompact === false && process.env.NODE_ENV !== "production") {
-      console.warn( // eslint-disable-line no-console
-      "`verticalCompact` on <ReactGridLayout> is deprecated and will be removed soon. " + 'Use `compactType`: "horizontal" | "vertical" | "wrap" | null.');
+    if (
+      props.verticalCompact === false &&
+      process.env.NODE_ENV !== "production"
+    ) {
+      console.warn(
+        // eslint-disable-line no-console
+        "`verticalCompact` on <ReactGridLayout> is deprecated and will be removed soon. " +
+          'Use `compactType`: "horizontal" | "vertical" | "wrap" | null.'
+      );
     }
   },
   // Choose vertical or hotizontal compaction
-  compactType: _propTypes.default.oneOf(["vertical", "horizontal"]),
+  compactType: _propTypes.default.oneOf(["vertical", "horizontal", "wrap"]),
   // layout is an array of object with the format:
   // {x: Number, y: Number, w: Number, h: Number, i: String}
-  layout: function layout(props
-  /*: Props*/
+  layout: function layout(
+    props
+    /*: Props*/
   ) {
     var layout = props.layout; // I hope you're setting the data-grid property on the grid items
 
@@ -109,10 +119,11 @@ var _default = {
     h: _propTypes.default.number.isRequired
   }),
   // Children must not have duplicate keys.
-  children: function children(props
-  /*: Props*/
-  , propName
-  /*: string*/
+  children: function children(
+    props,
+    /*: Props*/
+    propName
+    /*: string*/
   ) {
     var children = props[propName]; // Check children keys for duplicates. Throw if found.
 
@@ -120,7 +131,11 @@ var _default = {
 
     _react.default.Children.forEach(children, function (child) {
       if (keys[child.key]) {
-        throw new Error('Duplicate child key "' + child.key + '" found! This will cause problems in ReactGridLayout.');
+        throw new Error(
+          'Duplicate child key "' +
+            child.key +
+            '" found! This will cause problems in ReactGridLayout.'
+        );
       }
 
       keys[child.key] = true;
